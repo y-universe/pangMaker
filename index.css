@@ -1,0 +1,32 @@
+html, body {
+    margin: 5px;
+    padding: 0;
+}
+
+/*button {*/
+    /*align-items: flex-start;*/
+    /*text-align: center;*/
+    /*cursor: default;*/
+    /*color: buttontext;*/
+    /*background-color: buttonface;*/
+    /*box-sizing: border-box;*/
+    /*padding: 2px 6px 3px;*/
+    /*border-width: 2px;*/
+    /*border-style: outset;*/
+    /*border-color: buttonface;*/
+    /*border-image: initial;*/
+/*}*/
+
+.list-item {
+    display: inline-block;
+    margin-right: 10px;
+}
+.list-enter-active, .list-leave-active {
+    transition: all 1s;
+}
+.list-enter, .list-leave-to
+    /* .list-leave-active for below version 2.1.8 */ {
+    opacity: 0;
+    /*transform: translateY(30px);*/
+    transform: translateX(30px);
+}

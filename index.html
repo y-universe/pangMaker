@@ -2,55 +2,82 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+
     <script src="./vue.js"></script>
 </head>
 <body>
 
-<div id="app">
-    <p v-if="isStartScene">{{ message }}</p>
-    <button v-if="isStartScene" v-on:click="startGame">抱走一个小可爱！</button>
+<div id="app" class="container">
+    <div class="row">
+        <div class="col-sm" style="margin-top: 20px">
+            <p v-if="isStartScene">{{ message }}</p>
 
-    <!--<event-tree></event-tree>-->
+            <button v-if="isStartScene" v-on:click="startGame">抱走一个小可爱！</button>
 
-    <div v-if="basic" v-bind:class="personality">{{personality}}</div>
+            <!--<event-tree></event-tree>-->
 
-    <div v-if="basic">
-        <button v-on:click="doSomthing('eating')">吃饭</button>
-        <br>
-        <button v-on:click="doSomthing('sleeping')">睡觉</button>
-        <br>
+            <!--<div class="btn-group-vertical">-->
+            <div v-if="basic">
+                <button class="btn btn-outline-secondary" v-on:click="doSomthing('eating')">吃饭</button>
+                <br>
+                <button class="btn btn-outline-secondary" v-on:click="doSomthing('sleeping')">睡觉</button>
+                <br>
+            </div>
+            <div v-if="baby">
+                <button class="btn btn-outline-secondary" v-on:click="doSomthing('listening')">听歌</button>
+                <br>
+            </div>
+            <div v-if="child">
+                <button class="btn btn-outline-secondary" v-on:click="doSomthing('learning')">学习</button>
+                <br>
+                <button class="btn btn-outline-secondary" v-on:click="doSomthing('wandering')">闲逛</button>
+                <br>
+            </div>
+            <div v-if="teenage">
+                <button class="btn btn-outline-secondary" v-on:click="doSomthing('cooking')">做菜</button>
+                <br>
+            </div>
+
+            <p>
+            <div v-if="canDance">
+                <button class="btn btn-outline-secondary" v-on:click="doSomthing('dancing')">跳舞</button>
+                <br>
+            </div>
+            </p>
+        </div>
+        <!--</div>-->
+
+        <div class="col-sm">
+            <div v-if="basic">
+                <!--<textarea rows="10" cols="40">{{history}}</textarea>-->
+                <p style="color: red;">{{move}}</p>
+                <!--{{history}}-->
+                <textarea class="text-body" rows="10" cols="40">{{history}}</textarea>
+            </div>
+
+
+        </div>
+        <div v-if="basic" v-bind:class="personality">{{personality}}</div>
+
+        <!--<div v-if="seen" v-bind:class="personality">我今年{{personality.age}}岁啦</div>-->
+
+        <transition-group name="list" tag="p">
+
+            <div v-for="item in history1" v-bind:key="item">
+                {{ item}}
+            </div>
+        </transition-group>
+
+        <div v-if="finish">
+            <p>
+                结束：
+                <!--游戏结束，韩宇成长为：-->
+            </p>
+            <!--<p>《这就是街舞》冠军</p></div>-->
+        </div>
     </div>
-    <div v-if="baby">
-        <button v-on:click="doSomthing('listening')">听歌</button>
-    </div>
-    <div v-if="child">
-        <button v-on:click="doSomthing('learning')">学习</button>
-        <br>
-        <button v-on:click="doSomthing('wandering')">闲逛</button>
-        <br>
-    </div>
-    <div v-if="teenage">
-        <button v-on:click="doSomthing('cooking')">做菜</button>
-        <br>
-    </div>
-
-    <p>
-    <div v-if="canDance">
-        <button v-on:click="doSomthing('dancing')">跳舞</button>
-        <br>
-    </div>
-    </p>
-
-
-    <!--<div v-if="seen" v-bind:class="personality">我今年{{personality.age}}岁啦</div>-->
-    <div v-if="finish">
-        <p>
-            游戏结束，韩宇成长为：
-        </p>
-        <p>《这就是街舞》冠军</p></div>
-</div>
-
-<script src="index.js"></script>
+    <script src="index.js"></script>
 </div>
 </body>
 </html>
