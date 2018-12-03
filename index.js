@@ -73,7 +73,8 @@ var app = new Vue({
                     this.move = '睡了个好觉'
                     break
                 case  'eating':
-                    this.move = '吃的饱饱的'
+                    // this.move = '吃的饱饱的'
+                    this.move = randomEvent(eatingEvent)
                     break
                 case  'dancing':
                     this.personality.dance += 1
@@ -113,4 +114,9 @@ var app = new Vue({
 function wandering() {
     console.log('do something')
 
+}
+
+function randomEvent (dataName) {
+    randomNunber = Math.floor(Math.random() * dataName.length);
+    return dataName[randomNunber];
 }

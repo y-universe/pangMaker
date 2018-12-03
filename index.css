@@ -3,6 +3,12 @@ html, body {
     padding: 0;
 }
 
+.history {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 60;
+    overflow: hidden;
+}
 /*button {*/
     /*align-items: flex-start;*/
     /*text-align: center;*/

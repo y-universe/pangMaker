@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="./bootstrap.min.css">
 
     <script src="./vue.js"></script>
+    <script src="./event.js"></script>
 </head>
 <body>
 
@@ -48,27 +49,42 @@
         </div>
         <!--</div>-->
 
-        <div class="col-sm">
-            <div v-if="basic">
-                <!--<textarea rows="10" cols="40">{{history}}</textarea>-->
-                <p style="color: red;">{{move}}</p>
-                <!--{{history}}-->
-                <textarea class="text-body" rows="10" cols="40">{{history}}</textarea>
-            </div>
+        <!--<div class="col-sm">-->
+            <!--<div v-if="basic">-->
+                <!--&lt;!&ndash;<textarea rows="10" cols="40">{{history}}</textarea>&ndash;&gt;-->
+                <!--<p style="color: red;">{{move}}</p>-->
+                <!--&lt;!&ndash;{{history}}&ndash;&gt;-->
+                <!--<textarea class="text-body" rows="10" cols="40">{{history}}</textarea>-->
+            <!--</div>-->
+        <!--</div>-->
 
+        <div class="history" v-if="basic">
+            <transition-group name="list" tag="p">
 
+                <div v-for="item in history1" v-bind:key="item">
+                    {{ item}}
+                </div>
+            </transition-group>
         </div>
+
+
+        <!--<div class="card" style="max-height: 60px;overflow-y: scroll;">-->
+            <!--<div class="card-body">-->
+                <!--<p class="card-text">-->
+                    <!--<transition-group name="list" tag="p">-->
+
+                        <!--<div v-for="item in history1" v-bind:key="item">-->
+                            <!--{{ item}}-->
+                        <!--</div>-->
+                    <!--</transition-group>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+
         <div v-if="basic" v-bind:class="personality">{{personality}}</div>
-
         <!--<div v-if="seen" v-bind:class="personality">我今年{{personality.age}}岁啦</div>-->
-
-        <transition-group name="list" tag="p">
-
-            <div v-for="item in history1" v-bind:key="item">
-                {{ item}}
-            </div>
-        </transition-group>
-
+    </div>
+    <div class="row">
         <div v-if="finish">
             <p>
                 结束：
